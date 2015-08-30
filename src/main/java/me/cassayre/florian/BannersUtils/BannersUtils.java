@@ -1,5 +1,5 @@
 /**
- *  Banners util class
+ *  Banners Util Class
  *  Copyright (C) 2015 Florian Cassayre
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.block.Banner;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
 import org.bukkit.inventory.ItemStack;
@@ -56,10 +57,33 @@ public final class BannersUtils {
 		chars.put('x', getBannerMeta(DyeColor.WHITE, getPatterns(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT, PatternType.STRIPE_DOWNRIGHT)));
 		chars.put('y', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNRIGHT), new Pattern(DyeColor.WHITE, PatternType.HALF_VERTICAL_MIRROR), new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT))));
 		chars.put('z', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_TOP), new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_BOTTOM), new Pattern(DyeColor.BLACK, PatternType.SQUARE_TOP_LEFT), new Pattern(DyeColor.BLACK, PatternType.SQUARE_BOTTOM_RIGHT), new Pattern(DyeColor.WHITE, PatternType.RHOMBUS_MIDDLE), new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT))));
+		
+		chars.put('0', getBannerMeta(DyeColor.WHITE, getPatterns(DyeColor.BLACK, PatternType.STRIPE_TOP, PatternType.STRIPE_RIGHT, PatternType.STRIPE_BOTTOM, PatternType.STRIPE_LEFT)));
+		chars.put('1', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.SQUARE_TOP_LEFT), new Pattern(DyeColor.WHITE, PatternType.BORDER), new Pattern(DyeColor.BLACK, PatternType.STRIPE_CENTER))));
+		chars.put('2', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_TOP), new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_BOTTOM), new Pattern(DyeColor.BLACK, PatternType.SQUARE_TOP_LEFT), new Pattern(DyeColor.BLACK, PatternType.SQUARE_BOTTOM_RIGHT), new Pattern(DyeColor.WHITE, PatternType.RHOMBUS_MIDDLE), new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT))));
+		chars.put('3', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE), new Pattern(DyeColor.WHITE, PatternType.STRIPE_LEFT), new Pattern(DyeColor.BLACK, PatternType.STRIPE_BOTTOM), new Pattern(DyeColor.BLACK, PatternType.STRIPE_RIGHT), new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP))));
+		chars.put('4', getBannerMeta(DyeColor.BLACK, Arrays.asList(new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL), new Pattern(DyeColor.BLACK, PatternType.STRIPE_LEFT), new Pattern(DyeColor.WHITE, PatternType.STRIPE_BOTTOM), new Pattern(DyeColor.BLACK, PatternType.STRIPE_RIGHT), new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE))));
+		chars.put('5', getBannerMeta(DyeColor.BLACK, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.HALF_VERTICAL_MIRROR), new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR), new Pattern(DyeColor.BLACK, PatternType.STRIPE_BOTTOM), new Pattern(DyeColor.WHITE, PatternType.DIAGONAL_RIGHT_MIRROR), new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNRIGHT), new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP))));
+		chars.put('6', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_RIGHT), new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL), new Pattern(DyeColor.BLACK, PatternType.STRIPE_BOTTOM), new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE), new Pattern(DyeColor.BLACK, PatternType.STRIPE_LEFT), new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP))));
+		chars.put('7', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP), new Pattern(DyeColor.WHITE, PatternType.DIAGONAL_RIGHT), new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT))));
+		chars.put('8', getBannerMeta(DyeColor.WHITE, getPatterns(DyeColor.BLACK, PatternType.STRIPE_TOP, PatternType.STRIPE_LEFT, PatternType.STRIPE_RIGHT, PatternType.STRIPE_MIDDLE, PatternType.STRIPE_BOTTOM)));
+		chars.put('9', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_LEFT), new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR), new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE), new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP), new Pattern(DyeColor.BLACK, PatternType.STRIPE_RIGHT))));
+		
+		chars.put('.', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.SQUARE_BOTTOM_LEFT))));
+		chars.put(' ', getBannerMeta(DyeColor.WHITE, new ArrayList<Pattern>()));
+		chars.put('-', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE), new Pattern(DyeColor.WHITE, PatternType.BORDER))));
+		chars.put(':', getBannerMeta(DyeColor.BLACK, getPatterns(DyeColor.WHITE, PatternType.STRIPE_TOP, PatternType.STRIPE_LEFT, PatternType.STRIPE_RIGHT, PatternType.STRIPE_MIDDLE, PatternType.STRIPE_BOTTOM)));
+		chars.put(';', getBannerMeta(DyeColor.BLACK, getPatterns(DyeColor.WHITE, PatternType.STRIPE_DOWNRIGHT, PatternType.STRIPE_LEFT, PatternType.STRIPE_TOP, PatternType.STRIPE_MIDDLE, PatternType.BORDER)));
+		
+		chars.put('[', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.BORDER), new Pattern(DyeColor.BLACK, PatternType.HALF_VERTICAL), new Pattern(DyeColor.WHITE, PatternType.STRIPE_LEFT), new Pattern(DyeColor.WHITE, PatternType.STRIPE_RIGHT))));
+		chars.put(']', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.BORDER), new Pattern(DyeColor.BLACK, PatternType.HALF_VERTICAL_MIRROR), new Pattern(DyeColor.WHITE, PatternType.STRIPE_LEFT), new Pattern(DyeColor.WHITE, PatternType.STRIPE_RIGHT))));
+		chars.put('/', getBannerMeta(DyeColor.WHITE, getPatterns(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT)));
+		chars.put('\\', getBannerMeta(DyeColor.WHITE, getPatterns(DyeColor.BLACK, PatternType.STRIPE_DOWNRIGHT)));
+		chars.put('*', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.CROSS), new Pattern(DyeColor.BLACK, PatternType.STRAIGHT_CROSS), new Pattern(DyeColor.WHITE, PatternType.BORDER), new Pattern(DyeColor.WHITE, PatternType.CURLY_BORDER))));
 	}
 	
 	/**
-	 * 
+	 * Return a list of patterns with the same color.
 	 * @param color The generic color that will be used
 	 * @param type The layers to be printed on the banner using the chosen color
 	 * @return A copy of this banner
@@ -72,7 +96,7 @@ public final class BannersUtils {
 	}
 	
 	/**
-	 * 
+	 * Returns a banner containing the patterns with the background color.
 	 * @param color The background color
 	 * @param patterns The layers to be printed on the banner
 	 * @return An {@link ItemStack} containing these parameters
@@ -84,7 +108,7 @@ public final class BannersUtils {
 	}
 	
 	/**
-	 * 
+	 * Returns a banner meta corresponding to these parameters.
 	 * @param color The background color
 	 * @param patterns The layers to be printed on the banner
 	 * @return An ItemMeta containing these parameters
@@ -97,13 +121,27 @@ public final class BannersUtils {
 	}
 	
 	/**
-	 * 
+	 * Returns a banner item stack which represents the following character, with a specified background and the specified color.
+	 * Throws IllegalArgumentException if the character isn't registered.
 	 * @param c The character to be printed
 	 * @param background The background color
 	 * @param color The font color
 	 * @return A banner {@link ItemStack} with the corresponding character using a basic font system
 	 */
 	public static ItemStack getCharBanner(char c, DyeColor background, DyeColor color) {
+		return getCharBanner(c, background, color, false);
+	}
+	
+	/**
+	 * Returns a banner item stack which represents the following character, with a specified background and the specified color, and possibly a border.
+	 * Throws IllegalArgumentException if the character isn't registered.
+	 * @param c The character to be printed
+	 * @param background The background color
+	 * @param color The font color
+	 * @param border If set to {@code true}, then a border will be applied to the banner
+	 * @return A banner {@link ItemStack} with the corresponding character using a basic font system
+	 */
+	public static ItemStack getCharBanner(char c, DyeColor background, DyeColor color, boolean border) {
 		BannerMeta meta = chars.get(Character.toLowerCase(c));
 		
 		if(meta == null)
@@ -118,17 +156,99 @@ public final class BannersUtils {
 			patterns.set(i, new Pattern(patternColor, patterns.get(i).getPattern()));
 		}
 		
+		if(border)
+			patterns.add(new Pattern(background, PatternType.BORDER));
+		
 		return getBanner(meta.getBaseColor().equals(DyeColor.WHITE) ? background : color, patterns);
+	}
+	
+	/**
+	 * Returns a banner item stack which represents the following digit, with a specified background and the specified color, and possibly a border.
+	 * Throws IllegalArgumentException if the character isn't registered.
+	 * @param i The digit to be printed
+	 * @param background The background color
+	 * @param color The font color
+	 * @param border If set to {@code true}, then a border will be applied to the banner
+	 * @return A banner {@link ItemStack} with the corresponding digit using a basic font system
+	 */
+	public static ItemStack getDigitBanner(int i, DyeColor background, DyeColor color) {
+		return getDigitBanner(i, background, color, false);
+	}
+	
+	/**
+	 * Returns a banner item stack which represents the following digit, with a specified background and the specified color, and possibly a border.
+	 * Throws IllegalArgumentException if the character isn't registered.
+	 * @param i The digit to be printed
+	 * @param background The background color
+	 * @param color The font color
+	 * @param border If set to {@code true}, then a border will be applied to the banner
+	 * @return A banner {@link ItemStack} with the corresponding digit using a basic font system
+	 */
+	public static ItemStack getDigitBanner(int i, DyeColor background, DyeColor color, boolean border) {
+		if(i < 0 || i > 9)
+			throw new IllegalArgumentException("i must be a digit !");
+		return getCharBanner((char) (i + 48), background, color, border);
+	}
+	
+	/**
+	 * Copy the item's attributes to the banner block.
+	 * Throws IllegalArgumentException if the specified item is not a banner.
+	 * @param item The ItemStack to be copied
+	 * @param banner The banner block to copy
+	 */
+	public static void editBanner(ItemStack item, Banner banner) {
+		if(item.getType() != Material.BANNER) throw new IllegalArgumentException("The specified ItemStack isn't a banner !");
+		BannerMeta meta = (BannerMeta) item.getItemMeta();
+		banner.setBaseColor(meta.getBaseColor());
+		banner.setPatterns(meta.getPatterns());
+		banner.update();
+	}
+	
+	/**
+	 * Returns a list of item stacks which represents the following string, with a specified background and the specified color.
+	 * Throws IllegalArgumentException if a character in the string isn't registered.
+	 * @param string
+	 * @param background The background color
+	 * @param color The font color
+	 * @return A list of banners {@link ItemStack} representing the corresponding string using a basic font system
+	 */
+	public static List<ItemStack> getStringBanners(String string, DyeColor background, DyeColor color) {
+		return getStringBanners(string, background, color, false);
+	}
+	
+	/**
+	 * Returns a list of item stacks which represents the following string, with a specified background and the specified color, and possibly a border.
+	 * Throws IllegalArgumentException if a character in the string isn't registered.
+	 * @param string
+	 * @param background The background color
+	 * @param color The font color
+	 * @param border If set to {@code true}, then a border will be applied to the banner
+	 * @return A list of banners {@link ItemStack} representing the corresponding string using a basic font system
+	 */
+	public static List<ItemStack> getStringBanners(String string, DyeColor background, DyeColor color, boolean border) {
+		List<ItemStack> items = new ArrayList<>();
+		for(char c : string.toCharArray()) {
+			try {
+				items.add(getCharBanner(c, background, color, border));
+			} catch(IllegalArgumentException e) {
+				throw new IllegalArgumentException("The character '" + c + "' can't be reproduced on a banner !");
+			}
+		}
+		
+		return items;
 	}
 	
 	@Deprecated
 	private static List<Pattern> clonePatterns(List<Pattern> list) {
-		List<Pattern> newList = new ArrayList<Pattern>();
+		List<Pattern> newList = new ArrayList<>();
 		for(Pattern pattern : list) {
-			newList.add(pattern);
+			newList.add(new Pattern(pattern.getColor(), pattern.getPattern()));
 		}
 		return newList;
 	}
 	
+	/**
+	 * Prevents the class to be instantiated.
+	 */
 	private BannersUtils() {}
 }
